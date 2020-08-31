@@ -19,7 +19,7 @@ function setup() {
   
   foodObj = new Food();
 
-  foodStock=database.ref('Food');
+  foodStock=database.ref('food');
   foodStock.on("value",readStock);
 
   fedTime=database.ref('FeedTime');
@@ -33,16 +33,16 @@ function setup() {
     gameState=data.val();
   });
    
-  dog=createSprite(550,250,10,10);
+  dog=createSprite(860,250,10,10);
   dog.addImage(sadDog);
-  dog.scale=0.15;
+  dog.scale=0.4;
   
-  feed=createButton("FEED DRAGO");
-  feed.position(500,15);
+  feed=createButton("Feed Dog");
+  feed.position(width/2+500,100);
   feed.mousePressed(feedDog);
 
-  addFood=createButton("ADD FOOD");
-  addFood.position(400,15);
+  addFood=createButton("Add Food");
+  addFood.position(width/2+400,100);
   addFood.mousePressed(addFoods);
 }
 
@@ -69,7 +69,7 @@ function draw() {
    }else{
     feed.show();
     addFood.show();
-    
+    //dog.addImage(sadDog);
    }
  
   drawSprites();
@@ -88,7 +88,7 @@ function feedDog(){
 
   foodObj.updateFoodStock(foodObj.getFoodStock()-1);
   database.ref('/').update({
-    Food:foodObj.getFoodStock(),
+    food:foodObj.getFoodStock(),
     FeedTime:hour(),
     gameState:"Hungry"
   })
@@ -99,7 +99,7 @@ function addFoods(){
   
   foodS++;
   database.ref('/').update({
-    Food:foodS
+    food:foodS
   })
 }
 
