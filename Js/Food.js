@@ -27,19 +27,19 @@ class Food {
       background(46,139,87);
 
       fill(255,255,254);
-      textSize(15);
+      textSize(20);
       if(lastFed>=12){
-          text("Last Feed : "+ lastFed%12 + " PM", 50,30);
+          text("Last Feed : "+ lastFed%12 + " PM", 350, 30);
       }else if(lastFed==0){
-          text("Last Feed : 12 AM",50,30);
+          text("Last Feed : 12 AM",350,30);
       }else{
-          text("Last Feed : "+ lastFed + " AM", 50,30);
+          text("Last Feed : "+ lastFed + " AM", 350,30);
       }
-      var x=70,y=100; 
+      var x=70,y=20; 
       imageMode(CENTER);
       if(this.foodStock!=0){
       for(var i=0;i<this.foodStock;i++){
-        if(i%10==0){
+        if(i%19==0){
           x=70;
           y=y+50;
         }
